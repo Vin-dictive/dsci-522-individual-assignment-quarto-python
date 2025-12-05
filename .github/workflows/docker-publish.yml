@@ -46,8 +46,10 @@ jobs:
       
       - name: Update docker-compose.yml with new image tag
         if: success()
+        env:
+          IMAGE_TAG: ${{ steps.meta.outputs.version }}
         run: |
-          sed -i "s|image: vindictive/dsci-522-individual-assignment-quarto-python:.*|image: vindictive/dsci-522-individual-assignment-quarto-python:${{ steps.meta.outputs.version }}|" docker-compose.yml
+          sed -i '' 's|image: vindictive/dsci-522-individual-assignment-quarto-python:.*|image: vindictive/dsci-522-individual-assignment-quarto-python:${{IMAGE_TAG}}|' docker-compose.yml
 
       - name: Commit and push updated docker-compose.yml
         if: success()
