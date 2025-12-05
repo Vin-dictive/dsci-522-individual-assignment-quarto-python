@@ -2,9 +2,8 @@ services:
   # run jupyter notebook inside jupyter 
   jupyter-notebook:
     image: vindictive/dsci-522-individual-assignment-quarto-python:latest
-    build: .
     ports:
-      - "8000:8000"
+      - "8888:8888"
     volumes:
       - .:/home/jovyan
     deploy:
